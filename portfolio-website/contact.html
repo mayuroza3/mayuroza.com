@@ -102,9 +102,6 @@
                     style="width: 40px; height: 40px; object-fit: cover;">
                 <span class="fw-bold fs-5">Mayur Oza</span>
             </div>
-            <a href="assets/images/Mayur_Oza_Resume.pdf" class="btn btn-sm btn-primary rounded-pill px-3" download>
-                <i class="fas fa-download me-1"></i> CV
-            </a>
         </header>
 
         <section class="py-5 px-3 px-md-5">
@@ -159,28 +156,71 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="card border-0 shadow-sm p-4">
-                            <form action="mailto:contact@mayuroza.com" method="post" enctype="text/plain">
-                                <div class="mb-3">
-                                    <label for="name" class="form-label fw-medium">Name</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="name" name="name"
-                                        placeholder="Your Name" required>
+                        <div class="card border-0 shadow-lg p-4 p-md-5">
+                            <h2 class="h4 fw-bold mb-4">Send Message</h2>
+                            <form id="contactForm" onsubmit="sendToEmailApp(event)">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control bg-light border-0" id="name"
+                                                placeholder="Your Name" required>
+                                            <label for="name">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="tel" class="form-control bg-light border-0" id="mobile"
+                                                placeholder="Mobile Number" required>
+                                            <label for="mobile">Mobile Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control bg-light border-0" id="email"
+                                                placeholder="Email Address" required>
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control bg-light border-0"
+                                                placeholder="Leave a message here" id="message" style="height: 150px"
+                                                required></textarea>
+                                            <label for="message">Your Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-lg rounded-pill px-5 w-100 py-3 shadow-sm hover-lift">
+                                            <i class="fas fa-paper-plane me-2"></i> Send Message
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label fw-medium">Email</label>
-                                    <input type="email" class="form-control bg-light border-0 py-2" id="email"
-                                        name="email" placeholder="name@example.com" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="message" class="form-label fw-medium">Message</label>
-                                    <textarea class="form-control bg-light border-0" id="message" name="message"
-                                        rows="5" placeholder="Tell me about your project..." required></textarea>
-                                </div>
-                                <button type="submit"
-                                    class="btn btn-primary w-100 rounded-pill py-2 shadow-sm hover-lift">Send
-                                    Message</button>
                             </form>
                         </div>
+
+                        <script>
+                            function sendToEmailApp(event) {
+                                event.preventDefault();
+
+                                const name = document.getElementById('name').value;
+                                const mobile = document.getElementById('mobile').value;
+                                const email = document.getElementById('email').value;
+                                const message = document.getElementById('message').value;
+
+                                const myEmail = "mayuroza3@gmail.com";
+                                const subject = encodeURIComponent("Portfolio Contact: " + name);
+
+                                const body = encodeURIComponent(
+                                    "Name: " + name + "\n" +
+                                    "Email: " + email + "\n" +
+                                    "Mobile: " + mobile + "\n\n" +
+                                    "Message:\n" + message
+                                );
+
+                                window.location.href = "mailto:" + myEmail + "?subject=" + subject + "&body=" + body;
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -208,10 +248,11 @@
         </ul>
     </nav>
 
-    <a href="assets/images/Mayur_Oza_Resume.pdf" download
-        class="btn btn-primary rounded-circle shadow-lg d-lg-none position-fixed bottom-0 end-0 m-3 mb-5 d-flex align-items-center justify-content-center animate-bounce-in hover-scale"
+    <!-- WhatsApp Floating Action Button (FAB) for Mobile -->
+    <a href="https://wa.me/917984666164?text=I'm%20Interested%20to%20work%20with%20you" target="_blank"
+        class="btn btn-success rounded-circle shadow-lg d-lg-none position-fixed bottom-0 end-0 m-3 mb-5 d-flex align-items-center justify-content-center animate-bounce-in hover-scale"
         style="width: 56px; height: 56px; z-index: 1040; bottom: 80px !important;">
-        <i class="fas fa-file-alt fs-4"></i>
+        <i class="fab fa-whatsapp fs-2"></i>
     </a>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
