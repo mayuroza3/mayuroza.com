@@ -1,11 +1,22 @@
-RewriteEngine on
-#RewriteEngine On
-#RewriteCond %{HTTPS} off [OR]
-#RewriteCond %{HTTP_HOST} ^www\. [NC]
-#RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-#RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+RewriteEngine On
 
-# compress text, HTML, JavaScript, CSS, and XML
+# 1. Force HTTPS and non-www (canonical domain)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+
+# 2. Custom 404 Error Page
+ErrorDocument 404 /404.html
+
+# 301 Redirects for Old URLs
+RewriteRule ^about-us\.html$ /about.html [L,R=301]
+RewriteRule ^contact-us\.html$ /contact.html [L,R=301]
+RewriteRule ^portfolio\.html$ /projects.html [L,R=301]
+RewriteRule ^work\.html$ /projects.html [L,R=301]
+RewriteRule ^resume\.html$ /experience.html [L,R=301]
+
+# 3. Compression (Gzip/Deflate)
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/html
 AddOutputFilterByType DEFLATE text/xml
@@ -16,95 +27,47 @@ AddOutputFilterByType DEFLATE application/rss+xml
 AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 
-# remove browser bugs
-BrowserMatch ^Mozilla/4 gzip-only-text/html
-BrowserMatch ^Mozilla/4\.0[678] no-gzip
-BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
-Header append Vary User-Agent
-
+# 4. Security Headers
 <IfModule mod_headers.c>
   Header set X-XSS-Protection "1; mode=block"
-</IfModule>
-<IfModule mod_headers.c>
   Header always append X-Frame-Options SAMEORIGIN
-</IfModule>
-<IfModule mod_headers.c>
   Header set X-Content-Type-Options nosniff
 </IfModule>
 
-# ------------------------------------------------------------------------------
-# | Expires headers                                                            |
-# ------------------------------------------------------------------------------
-# Serve resources with far-future expires headers.
-# IMPORTANT: If you don't control versioning with filename-based cache
-# busting, consider lowering the cache times to something like one week.
+# 5. Browser Caching & Expires Headers
 <IfModule mod_expires.c>
     ExpiresActive on
     ExpiresDefault                                      "access plus 1 month"
-
-  # CSS
     ExpiresByType text/css                              "access plus 1 month"
-
-  # Data interchange
     ExpiresByType application/json                      "access plus 0 seconds"
     ExpiresByType application/ld+json                   "access plus 0 seconds"
-    ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
     ExpiresByType application/xml                       "access plus 0 seconds"
     ExpiresByType text/xml                              "access plus 0 seconds"
-
-  # Favicon (cannot be renamed!) and cursor images
     ExpiresByType image/x-icon                          "access plus 1 year"
-
-  # HTML components (HTCs)
-    ExpiresByType text/x-component                      "access plus 1 month"
-
-  # HTML
     ExpiresByType text/html                             "access plus 0 seconds"
-
-  # JavaScript
     ExpiresByType application/javascript                "access plus 1 month"
-
-  # Manifest files
-    ExpiresByType application/manifest+json             "access plus 1 month"
-    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
-    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
-
-  # Media
-    ExpiresByType audio/ogg                             "access plus 1 month"
     ExpiresByType image/gif                             "access plus 1 month"
     ExpiresByType image/jpeg                            "access plus 1 month"
     ExpiresByType image/webp                            "access plus 1 month"
     ExpiresByType image/png                             "access plus 1 month"
-    ExpiresByType video/mp4                             "access plus 1 month"
-    ExpiresByType video/ogg                             "access plus 1 month"
-    ExpiresByType video/webm                            "access plus 1 month"
-
-  # Web feeds
-    ExpiresByType application/atom+xml                  "access plus 1 hour"
-    ExpiresByType application/rss+xml                   "access plus 1 hour"
-
-  # Web fonts
+    ExpiresByType font/opentype                         "access plus 1 month"
     ExpiresByType application/font-woff                 "access plus 1 month"
     ExpiresByType application/font-woff2                "access plus 1 month"
-    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-    ExpiresByType application/x-font-ttf                "access plus 1 month"
-    ExpiresByType font/opentype                         "access plus 1 month"
     ExpiresByType image/svg+xml                         "access plus 1 month"
 </IfModule>
 
+# 6. Remove ETag (to force using Expires headers)
 <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|webp|gif|js|css|swf)(\.gz)?$">
     Header unset ETag
     FileETag None
 </FilesMatch>
 
-RewriteCond %{HTTP_HOST} ^rusticblendsindia\.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.rusticblendsindia\.com$
-RewriteRule ^/?$ "https\:\/\/rusticblends\.in\/" [R=301,L]
+# Removed incorrect redirects for rusticblendsindia
+# RewriteCond %{HTTP_HOST} ^rusticblendsindia\.com$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.rusticblendsindia\.com$
+# RewriteRule ^/?$ "https\:\/\/rusticblends\.in\/" [R=301,L]
 
 # BEGIN cPanel-generated php ini directives, do not edit
-# Manual editing of this file may result in unexpected behavior.
-# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
-# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
 <IfModule php8_module>
    php_flag display_errors Off
    php_value max_execution_time 3000
@@ -132,7 +95,6 @@ RewriteRule ^/?$ "https\:\/\/rusticblends\.in\/" [R=301,L]
 # END cPanel-generated php ini directives, do not edit
 
 # php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php81” package as the default “PHP” programming language.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
 </IfModule>
