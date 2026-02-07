@@ -3,19 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Projects | Mayur Oza - Senior Full-Stack Developer</title>
     <meta name="description"
-        content="View Mayur Oza's portfolio of projects including Laravel SaaS applications, WordPress plugins, Flutter apps, and API integrations.">
-    <meta name="keywords" content="Mayur Oza Projects, Laravel Portfolio, PHP Code Samples, Flutter Apps">
+        content="View Mayur Oza's portfolio of projects including Laravel SaaS applications, WordPress plugins, Flutter apps, and complex API integrations. Over 10+ years of experience.">
+    <meta name="keywords"
+        content="Mayur Oza Projects, Laravel Portfolio, PHP Code Samples, Flutter Apps, WordPress Plugins">
     <meta name="author" content="Mayur Oza">
+    <link rel="canonical" href="https://mayuroza.com/projects.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mayuroza.com/projects.html">
     <meta property="og:title" content="Projects | Mayur Oza - Senior Full-Stack Developer">
-    <meta property="og:description" content="A showcase of technical projects and open-source contributions.">
+    <meta property="og:description"
+        content="A showcase of technical projects and open-source contributions by Mayur Oza.">
     <meta property="og:image" content="https://mayuroza.com/assets/images/profile.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://mayuroza.com/projects.html">
+    <meta name="twitter:title" content="Projects | Mayur Oza - Senior Full-Stack Developer">
+    <meta name="twitter:description"
+        content="A showcase of technical projects and open-source contributions by Mayur Oza.">
+    <meta name="twitter:image" content="https://mayuroza.com/assets/images/profile.jpg">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -23,6 +34,7 @@
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Mayur Oza - Projects",
+      "url": "https://mayuroza.com/projects.html",
       "mainEntity": {
         "@type": "ItemList",
         "itemListElement": [
@@ -40,16 +52,15 @@
       }
     }
     </script>
-
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157285505-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-157285505-1');
-        gtag('config', 'G-XNDBP6XQML');
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://mayuroza.com",
+      "name": "Mayur Oza Portfolio"
+    }
     </script>
+
     <!-- GTM -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -61,10 +72,15 @@
         })(window, document, 'script', 'dataLayer', 'GTM-TBNBDXC');</script>
 
     <link rel="icon" type="image/x-icon" href="assets/images/profile.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 
 <body class="bg-light">
@@ -75,9 +91,9 @@
     <nav class="sidebar d-none d-lg-flex flex-column justify-content-between p-4 bg-white shadow-sm position-fixed start-0 top-0 h-100"
         style="width: 280px; z-index: 1000;">
         <div class="text-center mb-4">
-            <img src="assets/images/profile.jpg" alt="Mayur Oza"
-                class="rounded-circle img-fluid border border-3 border-primary mb-3"
-                style="width: 120px; height: 120px; object-fit: cover;">
+            <img src="assets/images/profile.jpg" alt="Mayur Oza" width="120" height="120"
+                class="rounded-circle img-fluid border border-3 border-primary mb-3" style="object-fit: cover;"
+                loading="lazy">
             <h3 class="h4 fw-bold mb-1">Mayur Oza</h3>
             <p class="text-muted small">Senior Full-Stack Developer</p>
         </div>
@@ -94,9 +110,9 @@
                         class="fas fa-envelope fa-fw"></i> Contact</a></li>
         </ul>
         <div class="text-center mt-4">
-            <a href="https://github.com/mayuroza3" target="_blank" class="text-muted me-3"><i
+            <a href="https://github.com/mayuroza3" target="_blank" class="text-muted me-3" aria-label="GitHub"><i
                     class="fab fa-github fa-lg"></i></a>
-            <a href="https://linkedin.com/in/mayur-oza" target="_blank" class="text-muted"><i
+            <a href="https://linkedin.com/in/mayur-oza" target="_blank" class="text-muted" aria-label="LinkedIn"><i
                     class="fab fa-linkedin fa-lg"></i></a>
             <p class="small text-muted mt-3">&copy; 2026 Mayur Oza</p>
         </div>
@@ -108,8 +124,8 @@
         <header
             class="d-lg-none py-3 px-4 bg-white shadow-sm sticky-top d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-2">
-                <img src="assets/images/profile.jpg" alt="Mayur Oza" class="rounded-circle"
-                    style="width: 40px; height: 40px; object-fit: cover;">
+                <img src="assets/images/profile.jpg" alt="Mayur Oza" width="40" height="40" class="rounded-circle"
+                    style="object-fit: cover;">
                 <span class="fw-bold fs-5">Mayur Oza</span>
             </div>
         </header>
@@ -117,7 +133,7 @@
         <section class="py-5 px-3 px-md-5">
             <div class="container animate-fade-in-up">
                 <div class="d-flex align-items-center gap-3 mb-4">
-                    <h1 class="display-5 fw-bold mb-0">Featured Projects</h1>
+                    <h1 class="display-5 fw-bold mb-0">Featured Web & Mobile Projects</h1>
                     <div class="flex-grow-1 border-bottom d-none d-md-block"></div>
                 </div>
 
@@ -134,7 +150,7 @@
                                 </div>
 
                                 <a href="https://github.com/mayuroza3" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h5 fw-bold mb-2">Laravel Role & Permission System</h3>
@@ -161,7 +177,7 @@
                                     <i class="fas fa-chart-line fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h5 fw-bold mb-2">Sales Dashboard</h3>
@@ -188,7 +204,7 @@
                                     <i class="fab fa-wordpress fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h5 fw-bold mb-2">WP Custom ACF Forms</h3>
@@ -215,7 +231,7 @@
                                     <i class="fas fa-exchange-alt fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3/cpabeX" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h5 fw-bold mb-2">Encryption Scheme (cpabeX)</h3>
@@ -241,7 +257,7 @@
                                     <i class="fas fa-sitemap fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3/sitemap-from-menu-wp" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h6 fw-bold mb-2">WP Sitemap Generator</h3>
@@ -263,7 +279,7 @@
                                     <i class="fas fa-mobile-alt fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3/WP_float_mobile_footer" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h6 fw-bold mb-2">WP Float Mobile Footer</h3>
@@ -285,7 +301,7 @@
                                     <i class="fas fa-database fa-lg"></i>
                                 </div>
                                 <a href="https://github.com/mayuroza3" target="_blank"
-                                    rel="nofollow noopener noreferrer" class="text-muted"><i
+                                    rel="nofollow noopener noreferrer" class="text-muted" aria-label="GitHub"><i
                                         class="fab fa-github fa-lg"></i></a>
                             </div>
                             <h3 class="h6 fw-bold mb-2">WP to Laravel Migrator</h3>
@@ -447,13 +463,13 @@
     <!-- WhatsApp Floating Action Button (FAB) for Mobile -->
     <a href="https://wa.me/917984666164?text=I'm%20Interested%20to%20work%20with%20you" target="_blank"
         class="btn btn-success rounded-circle shadow-lg d-lg-none position-fixed bottom-0 end-0 m-3 mb-5 d-flex align-items-center justify-content-center animate-bounce-in hover-scale"
-        style="width: 56px; height: 56px; z-index: 1040; bottom: 80px !important;">
+        style="width: 56px; height: 56px; z-index: 1040; bottom: 80px !important;" aria-label="WhatsApp">
         <i class="fab fa-whatsapp fs-2"></i>
     </a>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/script.min.js" defer></script>
 </body>
 
 </html>
